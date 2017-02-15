@@ -14,13 +14,13 @@ URL_NUEVA="URL o direccion IP nueva"
 
 echo "Iniciando la actualizacion de URL's..."
 
-mysql -u$USUARIO_MYSQL -p$PASSWD_MYSQL $BASE_MYSQL -e"UPDATE wp_options SET option_value = replace(option_value, '$URL_VIEJA', '$URL_NUEVA') WHERE option_name = 'home' OR option_name = 'siteurl';" >> $BASE_MYSQL_$(date +%Y-%m-%d).log
+mysql -u$USUARIO_MYSQL -p$PASSWD_MYSQL $BASE_MYSQL -e"UPDATE wp_options SET option_value = replace(option_value, '$URL_VIEJA', '$URL_NUEVA') WHERE option_name = 'home' OR option_name = 'siteurl';" 
 
-mysql -u$USUARIO_MYSQL -p$PASSWD_MYSQL $BASE_MYSQL -e"UPDATE wp_posts SET guid = replace(guid, '$URL_VIEJA', '$URL_NUEVA');" >> $BASE_MYSQL_$(date +Y-%m-%d).log
+mysql -u$USUARIO_MYSQL -p$PASSWD_MYSQL $BASE_MYSQL -e"UPDATE wp_posts SET guid = replace(guid, '$URL_VIEJA', '$URL_NUEVA');"
 
-mysql -u$USUARIO_MYSQL -p$PASSWD_MYSQL $BASE_MYSQL -e"UPDATE wp_posts SET post_content = replace(post_content, '$URL_VIEJA', '$URL_NUEVA');" >> $BASE_MYSQL_$(date +%Y-%m-%d).log
+mysql -u$USUARIO_MYSQL -p$PASSWD_MYSQL $BASE_MYSQL -e"UPDATE wp_posts SET post_content = replace(post_content, '$URL_VIEJA', '$URL_NUEVA');"
 
-mysql -u$USUARIO_MYSQL -p$PASSWD_MYSQL $BASE_MYSQL -e"UPDATE wp_postmeta SET meta_value = replace(meta_value, '$URL_VIEJA', 'URL_NUEVA');" >> $BASE_MYSQL_$(date +%Y-%m-%d).log
+mysql -u$USUARIO_MYSQL -p$PASSWD_MYSQL $BASE_MYSQL -e"UPDATE wp_postmeta SET meta_value = replace(meta_value, '$URL_VIEJA', 'URL_NUEVA');" 
 
 echo "Actualizacion terminada."
 
